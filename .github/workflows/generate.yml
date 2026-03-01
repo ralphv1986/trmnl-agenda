@@ -1,0 +1,40 @@
+name: Generate TRMNL pages
+
+on:
+  schedule:
+    # Elke dag om 05:00 CET (= 04:00 UTC in wintertijd, 03:00 UTC in zomertijd)
+    # We gebruiken 03:00 UTC zodat het in zomertijd om 05:00 is.
+    # In wintertijd wordt het dan 04:00 CET — ook prima.
+    - cron: '0 3 * * *'
+  workflow_dispatch: # Handmatig triggeren via GitHub UI
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate HTML pages
+        run: python generate.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
