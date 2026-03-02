@@ -2,10 +2,8 @@ name: Generate TRMNL pages
 
 on:
   schedule:
-    # Elke dag om 05:00 CET (= 04:00 UTC in wintertijd, 03:00 UTC in zomertijd)
-    # We gebruiken 03:00 UTC zodat het in zomertijd om 05:00 is.
-    # In wintertijd wordt het dan 04:00 CET — ook prima.
-    - cron: '0 3 * * *'
+    # Elk uur draaien (voor actuele begroeting + agenda)
+    - cron: '0 * * * *'
   workflow_dispatch: # Handmatig triggeren via GitHub UI
 
 jobs:

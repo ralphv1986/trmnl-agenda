@@ -62,6 +62,17 @@ def maand(d):
     return MAANDEN[d.month]
 
 
+def begroeting():
+    """Geef een begroeting op basis van het tijdstip."""
+    uur = datetime.now(TIMEZONE).hour
+    if uur < 12:
+        return "goedemorgen"
+    elif uur < 18:
+        return "goedemiddag"
+    else:
+        return "goedenavond"
+
+
 # === WEER ===
 def fetch_weather():
     print("  Weer ophalen (Open-Meteo)...")
@@ -274,7 +285,7 @@ def generate_html(weather, all_days):
             weather_html += f"""    <div class="weather-day today">
       <div class="weather-temp">{day['temp']}<sup>&deg;C</sup></div>
       <div class="weather-today-info">
-        <div class="weather-today-title">vandaag</div>
+        <div class="weather-today-title">{begroeting()}</div>
         <div class="weather-label">{day['label']}</div>
         <div class="weather-detail">{day['desc']}{f" &middot; &loz; {day['rain']} mm" if day['rain'] else ''}</div>
       </div>
@@ -354,9 +365,9 @@ def generate_html(weather, all_days):
     }}
     .event {{ display: flex; align-items: baseline; padding: 4px 0; gap: 10px; }}
     .event + .event {{ border-top: 1px dashed #ccc; }}
-    .event-time {{ font-size: 12px; font-weight: 700; white-space: nowrap; min-width: 82px; }}
+    .event-time {{ font-size: 14px; font-weight: 700; white-space: nowrap; min-width: 82px; }}
     .event-title {{
-      font-size: 12px; font-weight: 500; line-height: 1.3;
+      font-size: 14px; font-weight: 500; line-height: 1.3;
       overflow: hidden; text-overflow: ellipsis;
       display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
     }}
@@ -475,7 +486,7 @@ def generate_calendar_page(weather, cal_data, start_date):
             weather_html += f"""    <div class="weather-day today">
       <div class="weather-temp">{day['temp']}<sup>&deg;C</sup></div>
       <div class="weather-today-info">
-        <div class="weather-today-title">vandaag</div>
+        <div class="weather-today-title">{begroeting()}</div>
         <div class="weather-label">{day['label']}</div>
         <div class="weather-detail">{day['desc']}{f" &middot; &loz; {day['rain']} mm" if day['rain'] else ''}</div>
       </div>
