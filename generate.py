@@ -615,13 +615,13 @@ def generate_calendar_page(weather, cal_data, start_date):
       padding: 1px 5px; font-weight: 900;
     }}
     .ce {{
-      font-size: 12px; line-height: 1.3;
+      font-size: 14px; line-height: 1.3;
       padding: 1px 0;
       hyphens: none; -webkit-hyphens: none;
     }}
     .ca {{
       background: #000; color: #fff;
-      font-size: 12px; font-weight: 600;
+      font-size: 14px; font-weight: 600;
       padding: 1px 3px; margin: 1px -4px;
       hyphens: none; -webkit-hyphens: none;
     }}
