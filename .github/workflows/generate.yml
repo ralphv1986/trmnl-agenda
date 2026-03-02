@@ -2,8 +2,10 @@ name: Generate TRMNL pages
 
 on:
   schedule:
-    # Elk uur draaien (voor actuele begroeting + agenda)
-    - cron: '0 * * * *'
+    # 3x per dag op wisselmoment begroeting (tijden in UTC, +1/+2 voor CET/CEST)
+    - cron: '5 3 * * *'   # 04:05 wintertijd / 05:05 zomertijd → goedemorgen
+    - cron: '5 10 * * *'  # 11:05 wintertijd / 12:05 zomertijd → goedemiddag
+    - cron: '5 16 * * *'  # 17:05 wintertijd / 18:05 zomertijd → goedenavond
   workflow_dispatch: # Handmatig triggeren via GitHub UI
 
 jobs:
