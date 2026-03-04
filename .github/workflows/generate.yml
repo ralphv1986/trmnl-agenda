@@ -1,6 +1,8 @@
 name: Generate TRMNL pages
 
 on:
+  push:
+    branches: [main]
   schedule:
     # 3x per dag op wisselmoment begroeting (tijden in UTC, +1/+2 voor CET/CEST)
     - cron: '5 3 * * *'   # 04:05 wintertijd / 05:05 zomertijd → goedemorgen
