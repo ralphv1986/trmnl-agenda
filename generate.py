@@ -283,7 +283,7 @@ def generate_html(weather, all_days):
     for day in weather:
         if day["is_today"]:
             weather_html += f"""    <div class="weather-day today">
-      <div class="weather-temp">{day['temp']}<sup>&deg;C</sup></div>
+      <div class="weather-temp"><span class="weather-max">max</span>{day['temp']}<sup>&deg;C</sup></div>
       <div class="weather-today-info">
         <div class="weather-today-title">{begroeting()}</div>
         <div class="weather-label">{day['label']}</div>
@@ -343,7 +343,8 @@ def generate_html(weather, all_days):
     }}
     .weather-day:last-child {{ border-right: none; }}
     .weather-day.today {{ flex: none; width: 240px; flex-direction: row; align-items: center; justify-content: center; background: #000; color: #fff; border-right-color: #000; padding: 0; gap: 0; }}
-    .weather-day.today .weather-temp {{ font-size: 60px; font-weight: 900; display: flex; align-items: center; justify-content: center; padding: 0 10px; margin: 0; }}
+    .weather-day.today .weather-temp {{ font-size: 60px; font-weight: 900; display: flex; align-items: center; justify-content: center; padding: 0 10px; margin: 0; position: relative; }}
+    .weather-max {{ position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 600; letter-spacing: 0.5px; opacity: 0.6; }}
     .weather-day.today .weather-temp sup {{ font-size: 22px; }}
     .weather-today-info {{ display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; }}
     .weather-today-title {{ font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; text-align: left; }}
@@ -484,7 +485,7 @@ def generate_calendar_page(weather, cal_data, start_date):
     for day in weather:
         if day["is_today"]:
             weather_html += f"""    <div class="weather-day today">
-      <div class="weather-temp">{day['temp']}<sup>&deg;C</sup></div>
+      <div class="weather-temp"><span class="weather-max">max</span>{day['temp']}<sup>&deg;C</sup></div>
       <div class="weather-today-info">
         <div class="weather-today-title">{begroeting()}</div>
         <div class="weather-label">{day['label']}</div>
@@ -568,7 +569,8 @@ def generate_calendar_page(weather, cal_data, start_date):
     .weather-day {{ flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 6px 4px; border-right: 1px solid #ddd; }}
     .weather-day:last-child {{ border-right: none; }}
     .weather-day.today {{ flex: none; width: 240px; flex-direction: row; align-items: center; justify-content: center; background: #000; color: #fff; border-right-color: #000; padding: 0; gap: 0; }}
-    .weather-day.today .weather-temp {{ font-size: 60px; font-weight: 900; display: flex; align-items: center; justify-content: center; padding: 0 10px; margin: 0; }}
+    .weather-day.today .weather-temp {{ font-size: 60px; font-weight: 900; display: flex; align-items: center; justify-content: center; padding: 0 10px; margin: 0; position: relative; }}
+    .weather-max {{ position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 600; letter-spacing: 0.5px; opacity: 0.6; }}
     .weather-day.today .weather-temp sup {{ font-size: 22px; }}
     .weather-today-info {{ display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; }}
     .weather-today-title {{ font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; text-align: left; }}
